@@ -1,21 +1,16 @@
 function volume_sphere() {
     //Write your code here
-	const radiusInput = document.getElementById("radius").value;
-    const volumeOutput = document.getElementById("volume");
+	let radiusInput = document.getElementById('radius'); // your radius input id
+  let output = document.getElementById('volume'); // output element
 
-    // 2. Parse and validate: must be a non‑negative number
-    const radius = parseFloat(radiusInput);
+  let r = parseFloat(radiusInput.value);
+  if (isNaN(r) || r < 0) {
+    output.value = 'NaN';
+    return;
+  }
+  let volume = (4 / 3) * Math.PI * Math.pow(r, 3);
+  output.value = volume.toFixed(4);
 
-    if (isNaN(radius) || radius < 0) {
-        volumeOutput.value = "NaN";
-        return;
-    }
-
-    // 3. Compute volume using V = (4/3) * π * r^3
-    const volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
-
-    // 4. Round to 4 decimal places and display
-    volumeOutput.value = volume.toFixed(4);
 
   
 } 
