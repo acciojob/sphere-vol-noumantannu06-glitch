@@ -9,25 +9,19 @@ label,input{display:block;}
 </style>
 </head>
 <body>
-	<h1>Calculator</h1>
-  <form id="calcForm">
-    <label for="num1">First Number:</label>
-    <input type="number" id="num1" step="any" required>
+	 <h1>Volume of a Sphere Calculator</h1>
     
-    <label for="operator">Operator:</label>
-    <select id="operator" required>
-      <option value="+">+</option>
-      <option value="-">-</option>
-      <option value="*">×</option>
-      <option value="/">÷</option>
-    </select>
+    <div class="form-group">
+        <label for="radius"> Radius </label>
+        <input type="number" id="radius" placeholder="e.g., 5" step="any">
+    </div>
     
-    <label for="num2">Second Number:</label>
-    <input type="number" id="num2" step="any" required>
+    <button onclick="volume_sphere()">Calculate Volume</button>
     
-    <button type="submit">Calculate</button>
-  </form>
-  
+    <div class="form-group">
+        <label for="volume"></label>
+        <input type="text" id="volume" readonly>
+    </div>
   <div id="result" style="display: none;"></div>
 	<script type="text/javascript" src="./script.js"></script>
 </body>

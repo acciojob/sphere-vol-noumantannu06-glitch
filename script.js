@@ -1,39 +1,17 @@
-// Wait for DOM to fully load before accessing form
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('#calcForm');  // Specific ID selector
-  
-  if (!form) {
-    console.error('Form not found! Check HTML.');
-    return;
-  }
-  
-  // Line ~30: Safe onsubmit assignment
-  form.onsubmit = function(event) {
-    event.preventDefault();  // Prevent page reload
+function volume_sphere() {
+    // Get radius from input field (assume id="radius")
+    const radiusInput = document.getElementById('radius');
+    const radius = parseFloat(radiusInput.value);
     
-    const num1 = parseFloat(document.getElementById('num1').value);
-    const num2 = parseFloat(document.getElementById('num2').value);
-    const operator = document.getElementById('operator').value;
-    
-    let result;
-    switch (operator) {
-      case '+': result = num1 + num2; break;
-      case '-': result = num1 - num2; break;
-      case '*': result = num1 * num2; break;
-      case '/': 
-        if (num2 === 0) {
-          result = 'Error: Division by zero!';
-        } else {
-          result = num1 / num2;
-        }
-        break;
-      default: result = 'Invalid operator';
+    // Validate: NaN or negative → output NaN
+    if (isNaN(radius) || radius < 0) {
+        document.getElementById('volume').value = 'NaN';
+        return;
     }
     
-    // Display result
-    document.getElementById('result').textContent = `Result: ${result}`;
-    document.getElementById('result').style.display = 'block';
-  };
-  
-  console.log('Calculator initialized successfully!');
-});
+    // Calculate V = (4/3) * π * r³
+    const volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+    
+    // Round to 4 decimal places and display
+    document.getElementById('volume').value = volume.toFixed(4);
+}
