@@ -9,17 +9,19 @@ label,input{display:block;}
 </style>
 </head>
 <body>
-	 <h1>Volume of a Sphere Calculator</h1>
+	 <h1>Volume of a Sphere</h1>
+    
+    <form>
+        <div class="form-group">
+            <label for="radius">Radius:</label>
+            <input type="number" id="radius" placeholder="e.g., 5" step="any">
+        </div>
+        
+        <button type="button" id="submit" onclick="volume_sphere()">Calculate</button>
+    </form>
     
     <div class="form-group">
-        <label for="radius"> Radius </label>
-        <input type="number" id="radius" placeholder="e.g., 5" step="any">
-    </div>
-    
-    <button onclick="volume_sphere()">Calculate Volume</button>
-    
-    <div class="form-group">
-        <label for="volume"></label>
+        <label for="volume">Volume:</label>
         <input type="text" id="volume" readonly>
     </div>
   <div id="result" style="display: none;"></div>
